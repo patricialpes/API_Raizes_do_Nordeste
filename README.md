@@ -43,8 +43,8 @@ http://127.0.0.1:8000/docs
 
 POST /api/auth/login
 
-## buscar os dados
-POST /api/pedidos
-GET /api/pedidos
-POST /api/pagamentos/{id}?aprovado=true
-GET /api/admin/pedidos
+## Rotas
+- POST /api/pedidos
+- GET /api/pedidos
+- POST /api/pagamentos/{id}?aprovado=true
+- GET /api/admin/pedidos
