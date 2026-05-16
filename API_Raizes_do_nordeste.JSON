@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "API Rede Raízes do Nordeste",
+    "_postman_id": "11111111-2222-3333-4444-555555555555",
+    "description": "Collection com cenários T01 a T10 organizados por categoria",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "T01 - Login válido",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type","value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ana@gmail.com\",\n  \"senha\": \"123\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/auth/login",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","auth","login"]
+            }
+          }
+        },
+        {
+          "name": "T02 - Login inválido",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type","value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ana@gmail.com\",\n  \"senha\": \"999\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/auth/login",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","auth","login"]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "T03 - Criar pedido válido",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type","value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuarioId\": 1,\n  \"unidadeId\": 1,\n  \"canalPedido\": \"APP\",\n  \"itens\": [\n    {\n      \"produtoId\": 1,\n      \"quantidade\": 2\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pedidos",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pedidos"]
+            }
+          }
+        },
+        {
+          "name": "T04 - Listar pedidos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pedidos",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pedidos"]
+            }
+          }
+        },
+        {
+          "name": "T05 - Produto inexistente",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type","value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuarioId\": 1,\n  \"unidadeId\": 1,\n  \"canalPedido\": \"APP\",\n  \"itens\": [\n    {\n      \"produtoId\": 999,\n      \"quantidade\": 1\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pedidos",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pedidos"]
+            }
+          }
+        },
+        {
+          "name": "T06 - Estoque insuficiente",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type","value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuarioId\": 1,\n  \"unidadeId\": 1,\n  \"canalPedido\": \"APP\",\n  \"itens\": [\n    {\n      \"produtoId\": 7,\n      \"quantidade\": 999\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pedidos",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pedidos"]
+            }
+          }
+        },
+        {
+          "name": "T07 - Dados inválidos (422)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type","value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuarioId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pedidos",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pedidos"]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Pagamento",
+      "item": [
+        {
+          "name": "T08 - Pagamento aprovado",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pagamentos/1?aprovado=true",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pagamentos","1"],
+              "query": [{"key": "aprovado","value": "true"}]
+            }
+          }
+        },
+        {
+          "name": "T09 - Pagamento recusado",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pagamentos/1?aprovado=false",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pagamentos","1"],
+              "query": [{"key": "aprovado","value": "false"}]
+            }
+          }
+        },
+        {
+          "name": "T10 - Pedido inexistente",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/pagamentos/999?aprovado=true",
+              "protocol": "http",
+              "host": ["127","0","0","1"],
+              "port": "8000",
+              "path": ["api","pagamentos","999"],
+              "query": [{"key": "aprovado","value": "true"}]
+            }
+          }
+        }
+      ]
+    }
+
+  ]
+}
