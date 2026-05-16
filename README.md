@@ -3,7 +3,7 @@
 API desenvolvida em FastAPI para gerenciamento de pedidos, produtos e pagamentos de uma rede de lanchonetes que busca rapidez e excelência no atendimento aos seus clientes.
 Utiliza autenticação JWT e banco de dados MySQL.
 
-## Tecnologias usadas
+## Tecnologias 
 - Linguagem: Python
 - Framework: FastAPI
 - ORM: SQLAlchemy
